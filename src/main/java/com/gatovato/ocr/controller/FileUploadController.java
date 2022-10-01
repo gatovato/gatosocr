@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gatovato.ocr.exception.StorageFileNotFoundException;
-import com.gatovato.ocr.storage.StorageService;
+import com.gatovato.ocr.service.StorageService;
 
 @Controller
 public class FileUploadController {

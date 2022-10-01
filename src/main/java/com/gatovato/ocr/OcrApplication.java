@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 import com.gatovato.ocr.storage.StorageProperties;
-import com.gatovato.ocr.storage.StorageService;
+import com.gatovato.ocr.service.StorageService;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)

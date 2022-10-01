@@ -1,5 +1,6 @@
-package com.gatovato.ocr.storage;
+package com.gatovato.ocr.service;
 
+import com.gatovato.ocr.service.StorageService;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gatovato.ocr.exception.StorageException;
 import com.gatovato.ocr.exception.StorageFileNotFoundException;
+import com.gatovato.ocr.storage.StorageProperties;
 
 @Service
 public class FileSystemStorageService implements StorageService {
