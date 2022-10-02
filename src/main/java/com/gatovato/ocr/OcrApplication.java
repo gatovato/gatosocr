@@ -1,5 +1,6 @@
 package com.gatovato.ocr;
 
+import com.gatovato.ocr.service.OcrService;
 import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
@@ -12,18 +13,26 @@ import org.springframework.context.annotation.Import;
 
 import com.gatovato.ocr.storage.StorageProperties;
 import com.gatovato.ocr.service.StorageService;
+import org.jobrunr.scheduling.JobScheduler;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
 @Import(OcrConfiguration.class)
 public class OcrApplication {
+        @Autowired
+        private JobScheduler jobScheduler;
 
+        @Autowired
+        private OcrService ocrService;
+        
 	public static void main(String[] args) {
 		SpringApplication.run(OcrApplication.class, args);
 	}
         @Bean
 	CommandLineRunner init(StorageService storageService) {
 		return (args) -> {
+                        jobScheduler.enqueue(() -> ocrService.execute());
 			storageService.deleteAll("tmp");//delete contents of temp directory
 			storageService.init();
 		};
